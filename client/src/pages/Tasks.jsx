@@ -162,7 +162,7 @@ function Tasks() {
 
       fetchTasks();
 
-      toast.success("Task deleted");
+      toast.success("Task updated");
 
     } catch (error) {
       console.log(error);
