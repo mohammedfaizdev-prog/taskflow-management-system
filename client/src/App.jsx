@@ -2,6 +2,7 @@ import {
   BrowserRouter,
   Routes,
   Route,
+  Navigate,
 } from "react-router-dom";
 
 import Login from "./pages/Login";
@@ -15,9 +16,24 @@ import ProtectedRoute from "./routes/ProtectedRoute";
 function App() {
 
   return (
+
     <BrowserRouter>
 
       <Routes>
+
+        {/* ROOT REDIRECT */}
+
+        <Route
+          path="/"
+          element={
+            <Navigate
+              to="/login"
+              replace
+            />
+          }
+        />
+
+        {/* AUTH ROUTES */}
 
         <Route
           path="/login"
@@ -28,6 +44,8 @@ function App() {
           path="/register"
           element={<Register />}
         />
+
+        {/* PROTECTED ROUTES */}
 
         <Route
           path="/dashboard"
@@ -53,6 +71,18 @@ function App() {
             <ProtectedRoute>
               <Projects />
             </ProtectedRoute>
+          }
+        />
+
+        {/* INVALID ROUTES */}
+
+        <Route
+          path="*"
+          element={
+            <Navigate
+              to="/login"
+              replace
+            />
           }
         />
 
