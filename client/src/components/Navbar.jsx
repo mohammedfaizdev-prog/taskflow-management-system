@@ -20,7 +20,9 @@ function Navbar({ setSidebarOpen }) {
 
     logout();
 
-    navigate("/login");
+    navigate("/login", {
+      replace: true,
+    });
   };
 
   return (
